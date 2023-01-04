@@ -48,6 +48,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return StatusbarzCapturer(
           child: MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: AppStrings.appName,
             theme: ThemeData(
               primarySwatch: generateMaterialColor(Palette.primary),

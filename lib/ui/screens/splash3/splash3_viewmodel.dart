@@ -5,7 +5,7 @@ import 'package:stacked/stacked.dart';
 import '../../../app/app.router.dart';
 import '../../../app/utils.dart';
 
-class SplashViewModel extends BaseViewModel {
+class Splash3ViewModel extends BaseViewModel {
   Timer? _timer;
   // final _apiService = locator<ApiService>();
   // final _notificationService = locator<NotificationService>();
@@ -19,7 +19,7 @@ class SplashViewModel extends BaseViewModel {
       //   //Navigate to login
       // } else {
       //   // Navigate to home
-      navigationService.navigateTo(Routes.splash2View);
+      navigationService.navigateTo(Routes.homeView);
       // }
     });
 

@@ -3,14 +3,14 @@ import 'package:stacked/stacked.dart';
 
 import '../../../constants/assets.gen.dart';
 import '../../tools/screen_size.dart';
-import 'splash_viewmodel.dart';
+import 'splash2_viewmodel.dart';
 
-class SplashView extends StatelessWidget {
-  const SplashView({Key? key}) : super(key: key);
+class Splash2View extends StatelessWidget {
+  const Splash2View({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<SplashViewModel>.reactive(
+    return ViewModelBuilder<Splash2ViewModel>.reactive(
       onModelReady: (model) => model.startTimer(),
       builder: (context, model, child) {
         return Scaffold(
@@ -36,7 +36,7 @@ class SplashView extends StatelessWidget {
           ),
         );
       },
-      viewModelBuilder: () => SplashViewModel(),
+      viewModelBuilder: () => Splash2ViewModel(),
     );
   }
 }
