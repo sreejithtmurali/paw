@@ -10,7 +10,8 @@ class Assets {
   static const String fontsBarlowSemiBold = 'assets/fonts/Barlow-SemiBold.ttf';
   static const String imagesBg = 'assets/images/bg.png';
   static const String imagesCatanddog = 'assets/images/catanddog.png';
-  static const String imagesImg = 'assets/images/cautions.png';
+  static const String imagesCautions = 'assets/images/cautions.png';
+  static const String imagesImg = 'assets/images/img.png';
   static const String imagesLogo = 'assets/images/logo.png';
 
 }

@@ -22,4 +22,14 @@ class ScreenSize {
     safeBlockHorizontal = (width - _safeAreaHorizontal) / 100;
     safeBlockVertical = (height - _safeAreaVertical) / 100;
   }
+  static double getWidth(double totalwidth,double cwidth){
+    double s=(cwidth/totalwidth)*100;
+    double w=(width*s)/100;
+    return w;
+  }
+  static double getHeight(double totalheight,double myheight){
+    double s=(myheight/totalheight)*100;
+    double w=(height*s)/100;
+    return w;
+  }
 }

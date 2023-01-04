@@ -6,19 +6,39 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter/material.dart';
-import 'package:paw/ui/screens/home/home_view.dart' as _i3;
+import 'package:paw/ui/screens/home/home_view.dart' as _i5;
+import 'package:paw/ui/screens/login/login_view.dart' as _i6;
+import 'package:paw/ui/screens/Signup/signup_view.dart' as _i7;
+import 'package:paw/ui/screens/Signup2/signup_view2.dart' as _i8;
 import 'package:paw/ui/screens/splash/splash_view.dart' as _i2;
+import 'package:paw/ui/screens/splash2/splash2_view.dart' as _i3;
+import 'package:paw/ui/screens/splash3/splash3_view.dart' as _i4;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i4;
+import 'package:stacked_services/stacked_services.dart' as _i9;
 
 class Routes {
   static const splashView = '/';
 
+  static const splash2View = '/splash2-view';
+
+  static const splash3View = '/splash3-view';
+
   static const homeView = '/home-view';
+
+  static const loginView = '/login-view';
+
+  static const signUpView = '/sign-up-view';
+
+  static const signUpView2 = '/sign-up-view2';
 
   static const all = <String>{
     splashView,
+    splash2View,
+    splash3View,
     homeView,
+    loginView,
+    signUpView,
+    signUpView2,
   };
 }
 
@@ -29,8 +49,28 @@ class StackedRouter extends _i1.RouterBase {
       page: _i2.SplashView,
     ),
     _i1.RouteDef(
+      Routes.splash2View,
+      page: _i3.Splash2View,
+    ),
+    _i1.RouteDef(
+      Routes.splash3View,
+      page: _i4.Splash3View,
+    ),
+    _i1.RouteDef(
       Routes.homeView,
-      page: _i3.HomeView,
+      page: _i5.HomeView,
+    ),
+    _i1.RouteDef(
+      Routes.loginView,
+      page: _i6.LoginView,
+    ),
+    _i1.RouteDef(
+      Routes.signUpView,
+      page: _i7.SignUpView,
+    ),
+    _i1.RouteDef(
+      Routes.signUpView2,
+      page: _i8.SignUpView2,
     ),
   ];
 
@@ -41,9 +81,39 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i3.HomeView: (data) {
+    _i3.Splash2View: (data) {
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const _i3.HomeView(),
+        builder: (context) => const _i3.Splash2View(),
+        settings: data,
+      );
+    },
+    _i4.Splash3View: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const _i4.Splash3View(),
+        settings: data,
+      );
+    },
+    _i5.HomeView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const _i5.HomeView(),
+        settings: data,
+      );
+    },
+    _i6.LoginView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const _i6.LoginView(),
+        settings: data,
+      );
+    },
+    _i7.SignUpView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const _i7.SignUpView(),
+        settings: data,
+      );
+    },
+    _i8.SignUpView2: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const _i8.SignUpView2(),
         settings: data,
       );
     },
@@ -55,7 +125,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i4.NavigationService {
+extension NavigatorStateExtension on _i9.NavigationService {
   Future<dynamic> navigateToSplashView([
     int? routerId,
     bool preventDuplicates = true,
@@ -70,6 +140,34 @@ extension NavigatorStateExtension on _i4.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToSplash2View([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.splash2View,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToSplash3View([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.splash3View,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -78,6 +176,146 @@ extension NavigatorStateExtension on _i4.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.homeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToLoginView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.loginView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToSignUpView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.signUpView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToSignUpView2([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.signUpView2,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithSplashView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.splashView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithSplash2View([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.splash2View,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithSplash3View([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.splash3View,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithHomeView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.homeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithLoginView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.loginView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithSignUpView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.signUpView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithSignUpView2([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.signUpView2,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

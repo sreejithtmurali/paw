@@ -1,3 +1,6 @@
+import 'package:paw/ui/screens/Signup/signup_view.dart';
+import 'package:paw/ui/screens/Signup2/signup_view2.dart';
+import 'package:paw/ui/screens/login/login_view.dart';
 import 'package:paw/ui/screens/splash2/splash2_view.dart';
 import 'package:paw/ui/screens/splash3/splash3_view.dart';
 import 'package:stacked/stacked_annotations.dart';
@@ -13,6 +16,9 @@ import '../ui/screens/splash/splash_view.dart';
     MaterialRoute(page: Splash2View),
     MaterialRoute(page: Splash3View),
     MaterialRoute(page: HomeView),
+    MaterialRoute(page: LoginView),
+    MaterialRoute(page: SignUpView),
+    MaterialRoute(page: SignUpView2),
   ],
   dependencies: [
     LazySingleton(classType: ApiService),

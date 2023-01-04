@@ -1,4 +1,4 @@
-import 'dart:async';
+
 
 import 'package:stacked/stacked.dart';
 
@@ -6,29 +6,9 @@ import '../../../app/app.router.dart';
 import '../../../app/utils.dart';
 
 class Splash2ViewModel extends BaseViewModel {
-  Timer? _timer;
-  // final _apiService = locator<ApiService>();
-  // final _notificationService = locator<NotificationService>();
 
-  void startTimer() async {
-    // AppUser? user = await _userService.loadCredential();
-    // bool hasUser = user?.hasUser ?? false;
 
-    _timer = Timer(const Duration(seconds: 5), () async {
-      // if (hasUser) {
-      //   //Navigate to login
-      // } else {
-      //   // Navigate to home
-      navigationService.navigateTo(Routes.splash3View);
-      // }
-    });
-
-    // _notificationService.registerPushNotificationHandler();
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
+void NavNext(){
+  navigationService.navigateTo(Routes.splash3View);
+}
 }
