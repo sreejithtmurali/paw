@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import '../../app/utils.dart';
 
 Widget backButton({VoidCallback? onPressed, Color? color}) {
-  return IconButton(
+  return FloatingActionButton(
+    elevation: 5,
     onPressed: onPressed ?? () => navigationService.back(),
-    icon: Image.asset(
+    child:Image.asset(
       "assets/images/arrow-back.png",
       color: color,
     ),
-    splashRadius: kToolbarHeight / 2,
+    backgroundColor: Color(0xfffafafa),
   );
 }
