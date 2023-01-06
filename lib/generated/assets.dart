@@ -13,5 +13,6 @@ class Assets {
   static const String imagesCautions = 'assets/images/cautions.png';
   static const String imagesImg = 'assets/images/img.png';
   static const String imagesLogo = 'assets/images/logo.png';
+  static const String jsonPopularlist = 'assets/json/imagelist.json';
 
 }

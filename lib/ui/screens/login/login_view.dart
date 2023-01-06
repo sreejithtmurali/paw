@@ -211,7 +211,7 @@ class TitleSection extends ViewModelWidget<LoginViewModel> {
                           color: Colors.white,
                         )),
                     onPressed: () {
-                      // model.googleLogin();
+                     viewModel.navHomr();
                     },
 
                   )),

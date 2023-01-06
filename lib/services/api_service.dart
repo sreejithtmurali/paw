@@ -1,8 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/retry.dart';
 import 'package:http/http.dart' as http;
 
+
 import '../constants/app_strings.dart';
+import '../constants/assets.gen.dart';
+
+import '../models/RspBanner.dart';
 
 class ApiService {
   static const environment = ApiEnvironment.dev;
@@ -11,6 +18,17 @@ class ApiService {
   static String baseUrlApi = "$baseUrl/public/api";
   static String baseUrlImage = "$baseUrl/public/storage";
 
+  // Future<List<RespBa>> fetchbannerImages() async {
+  //   print("calling fn frm api service");
+  //   List<String> list=[];
+  //   final response = await rootBundle.loadString(Assets.json.imagelist);
+  //
+  //   var getDetailData = RspBanner.fromJson(json.decode(response)) as List<String>;
+  //
+  //   return getDetailData;
+  //
+  //   //throw Exception('Failed to load Users');
+  // }
   // final _userService = locator<UserService>();
   // final _notificationService = locator<NotificationService>();
 
