@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,7 +18,15 @@ class ApiService {
   static String baseUrl = environment.baseUrl;
   static String baseUrlApi = "$baseUrl/public/api";
   static String baseUrlImage = "$baseUrl/public/storage";
+  List<RspBanner> payloadFromJson(String str) => List<RspBanner>.from(json.decode(str).map((x) => RspBanner.fromJson(x)));
 
+  String payloadToJson(List<RspBanner> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
+  Future<List<RspBanner>> getSponsorSlide() async {
+    final response = await rootBundle.loadString(Assets.json.imagelist);
+    var payloadList = payloadFromJson(response);
+    return payloadList;
+  }
   // Future<List<RespBa>> fetchbannerImages() async {
   //   print("calling fn frm api service");
   //   List<String> list=[];

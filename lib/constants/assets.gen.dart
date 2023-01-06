@@ -45,6 +45,9 @@ class $AssetsFontsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/bannerr.png
+  AssetGenImage get bannerr => const AssetGenImage('assets/images/bannerr.png');
+
   /// File path: assets/images/bg.png
   AssetGenImage get bg => const AssetGenImage('assets/images/bg.png');
 
@@ -56,14 +59,21 @@ class $AssetsImagesGen {
   AssetGenImage get cautions =>
       const AssetGenImage('assets/images/cautions.png');
 
+  /// File path: assets/images/dog.png
+  AssetGenImage get dog => const AssetGenImage('assets/images/dog.png');
+
   /// File path: assets/images/img.png
   AssetGenImage get img => const AssetGenImage('assets/images/img.png');
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/star.png
+  AssetGenImage get star => const AssetGenImage('assets/images/star.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [bg, catanddog, cautions, img, logo];
+  List<AssetGenImage> get values =>
+      [bannerr, bg, catanddog, cautions, dog, img, logo, star];
 }
 
 class $AssetsJsonGen {

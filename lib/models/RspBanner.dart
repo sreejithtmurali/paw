@@ -2,15 +2,18 @@ class RspBanner {
   RspBanner({
       required this.image,});
 
-  RspBanner.fromJson(dynamic json) {
-    image = json['image'];
-  }
  late String image;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['image'] = image;
-    return map;
-  }
-
+  factory RspBanner.fromJson(Map<String, dynamic> json) => RspBanner(image: json["image"] == null ? null : json["image"],
+  );
+  Map<String, dynamic> toJson() => {
+    "image": image == null ? null : image,
+  };
 }
+
+
+
+
+
+
+
