@@ -1,3 +1,4 @@
+import 'package:paw/ui/screens/Cart/cart_view.dart';
 import 'package:paw/ui/screens/Signup/signup_view.dart';
 import 'package:paw/ui/screens/Signup2/signup_view2.dart';
 import 'package:paw/ui/screens/login/login_view.dart';
@@ -19,6 +20,7 @@ import '../ui/screens/splash/splash_view.dart';
     MaterialRoute(page: LoginView),
     MaterialRoute(page: SignUpView),
     MaterialRoute(page: SignUpView2),
+    MaterialRoute(page: CartView),
   ],
   dependencies: [
     LazySingleton(classType: ApiService),

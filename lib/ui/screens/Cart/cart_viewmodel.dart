@@ -10,7 +10,7 @@ import '../../../app/utils.dart';
 import '../../../models/RspBanner.dart';
 import '../../../services/api_service.dart';
 
-class HomeViewModel extends BaseViewModel {
+class CartViewModel extends BaseViewModel {
   int _current = 0;
 
   int get current => _current;
@@ -28,6 +28,6 @@ class HomeViewModel extends BaseViewModel {
     return _apiService.getSponsorSlide();
   }
   void navCart(){
-    navigationService.navigateTo(Routes.cartView);
+    navigationService.navigateTo(Routes.homeView);
   }
 }

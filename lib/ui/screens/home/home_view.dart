@@ -11,7 +11,7 @@ import 'home_viewmodel.dart';
 
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+   HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,25 +37,45 @@ class HomeView extends StatelessWidget {
             child:
               Column(
                 children: [
-                    TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-                    ),
+                    const Padding(
+                      padding:  EdgeInsets.all(16.0),
+                      child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search,color: Color(0xffa6a6a6),),
+                        suffixIcon: Icon(Icons.mic,color: Color(0xffa6a6a6),),
+                        border: OutlineInputBorder(),
+                        labelText: 'Search Product or Animal',
+                        labelStyle:  TextStyle(color: Color(0xffa6a6a6)),
+                        floatingLabelStyle:  TextStyle(color: Colors.black),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: 1, color: Color(0xffa6a6a6)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: 1, color: Color(0x74000000)),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 1, color: Colors.red),
+                        ),
+                      ),
                   ),
-                  SizedBox(height: 200, child:  Card(
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10))),
-                    child: FutureBuilder<List<RspBanner>>(
-                      future: viewModel.getSponsorSlide(),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasError) print(snapshot.error);
-                        return snapshot.hasData
-                            ? BannerWidget(list: snapshot.data as List<RspBanner>)
-                            : Center(child: CircularProgressIndicator());
-                      },
                     ),
-                  )),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0,right: 8.0),
+                    child: SizedBox(height: 200, child:  Card(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(10))),
+                      child: FutureBuilder<List<RspBanner>>(
+                        future: viewModel.getSponsorSlide(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasError) print(snapshot.error);
+                          return snapshot.hasData
+                              ? BannerWidget(list: snapshot.data as List<RspBanner>)
+                              : Center(child: CircularProgressIndicator());
+                        },
+                      ),
+                    )),
+                  ),
                   const SizedBox(
                     height: 32,
                   ),
@@ -172,7 +192,9 @@ class HomeView extends StatelessWidget {
                                          Center(child: Text("₹3600" ,style: TextStyle(fontSize: 12,color: Color(0xff3d3d3d),fontWeight: FontWeight.w500),)),
                                         SizedBox(width: 5,),
 
-                                       SizedBox(height:24,child: ElevatedButton(onPressed: (){}, child: Text("Add Cart",style: TextStyle(fontSize: 12),)))
+                                       SizedBox(height:24,child: ElevatedButton(onPressed: (){
+                                         viewModel.navCart();
+                                       }, child: Text("Add Cart",style: TextStyle(fontSize: 12),)))
 
                                       ],
                                     ),
