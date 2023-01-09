@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:convert';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,24 +23,10 @@ class ApiService {
   String payloadToJson(List<RspBanner> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
   Future<List<RspBanner>> getSponsorSlide() async {
-    final response = await rootBundle.loadString(Assets.json.imagelist);
+    final response =  rootBundle.loadString(Assets.json.imagelist) as String;
     var payloadList = payloadFromJson(response);
     return payloadList;
   }
-  // Future<List<RespBa>> fetchbannerImages() async {
-  //   print("calling fn frm api service");
-  //   List<String> list=[];
-  //   final response = await rootBundle.loadString(Assets.json.imagelist);
-  //
-  //   var getDetailData = RspBanner.fromJson(json.decode(response)) as List<String>;
-  //
-  //   return getDetailData;
-  //
-  //   //throw Exception('Failed to load Users');
-  // }
-  // final _userService = locator<UserService>();
-  // final _notificationService = locator<NotificationService>();
-
   var client = RetryClient(
     http.Client(),
     whenError: (onError, stackTrace) {
@@ -53,13 +39,6 @@ class ApiService {
   );
   Duration timeoutDuration = const Duration(seconds: 20);
   Map<String, String> get userHeader {
-    // if (user?.accessToken != null) {
-    //   return {
-    //     'Accept': 'application/json',
-    //     'Authorization': 'Bearer ${user!.accessToken}',
-    //     'Content-Type': 'application/json',
-    //   };
-    // }
     debugPrint('Token is null');
     return jsonHeader;
   }
@@ -69,23 +48,6 @@ class ApiService {
     'Content-Type': 'application/json',
   };
 
-  // Future<void> saveLoginCredential(AppUser appUser) async {
-  // user = appUser;
-  // SharedPreferences prefs = await SharedPreferences.getInstance();
-  // prefs.setBool(Prefs.isLoggedIn, true);
-  // prefs.setString(Prefs.user, jsonEncode(user!.toJson()));
-  // }
-
-  // Future<AppUser?> loadCredential() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   String? value = prefs.getString(Prefs.user);
-  //   if (value != null) {
-  //     user = AppUser.fromJson(jsonDecode(value));
-  //   } else {
-  //     user = null;
-  //   }
-  //   return user;
-  // }
 }
 
 enum ApiEnvironment {

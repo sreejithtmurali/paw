@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'dart:convert';
 
 import 'package:stacked/stacked.dart';
 
@@ -10,7 +10,7 @@ import '../../../app/utils.dart';
 import '../../../models/RspBanner.dart';
 import '../../../services/api_service.dart';
 
-class HomeViewModel extends BaseViewModel {
+class CartViewModel extends BaseViewModel {
   int _current = 0;
 
   int get current => _current;
@@ -20,17 +20,14 @@ class HomeViewModel extends BaseViewModel {
     notifyListeners();
   }
   final _apiService = locator<ApiService>();
-  List<RspBanner> banner_images = [];
+  late Future<List<RspBanner>> banner_images;
 
-  Future<void> getSponsorSlide() async {
-    var data = await runBusyFuture(_apiService.getSponsorSlide());
-    if (data.isNotEmpty) {
-      banner_images = data;
-    }
+  Future<List<RspBanner>> getSponsorSlide() async {
+    banner_images=_apiService.getSponsorSlide();
+    notifyListeners();
+    return _apiService.getSponsorSlide();
   }
-
-
   void navCart(){
-    navigationService.navigateTo(Routes.cartView);
+    navigationService.navigateTo(Routes.homeView);
   }
 }

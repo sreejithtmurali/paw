@@ -5,7 +5,9 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:flutter/material.dart' as _i10;
 import 'package:flutter/material.dart';
+import 'package:paw/ui/screens/Cart/cart_view.dart' as _i9;
 import 'package:paw/ui/screens/home/home_view.dart' as _i5;
 import 'package:paw/ui/screens/login/login_view.dart' as _i6;
 import 'package:paw/ui/screens/Signup/signup_view.dart' as _i7;
@@ -14,7 +16,7 @@ import 'package:paw/ui/screens/splash/splash_view.dart' as _i2;
 import 'package:paw/ui/screens/splash2/splash2_view.dart' as _i3;
 import 'package:paw/ui/screens/splash3/splash3_view.dart' as _i4;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i9;
+import 'package:stacked_services/stacked_services.dart' as _i11;
 
 class Routes {
   static const splashView = '/';
@@ -31,6 +33,8 @@ class Routes {
 
   static const signUpView2 = '/sign-up-view2';
 
+  static const cartView = '/cart-view';
+
   static const all = <String>{
     splashView,
     splash2View,
@@ -39,6 +43,7 @@ class Routes {
     loginView,
     signUpView,
     signUpView2,
+    cartView,
   };
 }
 
@@ -72,6 +77,10 @@ class StackedRouter extends _i1.RouterBase {
       Routes.signUpView2,
       page: _i8.SignUpView2,
     ),
+    _i1.RouteDef(
+      Routes.cartView,
+      page: _i9.CartView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
@@ -94,8 +103,11 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i5.HomeView: (data) {
+      final args = data.getArgs<HomeViewArguments>(
+        orElse: () => const HomeViewArguments(),
+      );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const _i5.HomeView(),
+        builder: (context) => _i5.HomeView(key: args.key),
         settings: data,
       );
     },
@@ -117,6 +129,15 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
+    _i9.CartView: (data) {
+      final args = data.getArgs<CartViewArguments>(
+        orElse: () => const CartViewArguments(),
+      );
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => _i9.CartView(key: args.key),
+        settings: data,
+      );
+    },
   };
 
   @override
@@ -125,7 +146,19 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i9.NavigationService {
+class HomeViewArguments {
+  const HomeViewArguments({this.key});
+
+  final _i10.Key? key;
+}
+
+class CartViewArguments {
+  const CartViewArguments({this.key});
+
+  final _i10.Key? key;
+}
+
+extension NavigatorStateExtension on _i11.NavigationService {
   Future<dynamic> navigateToSplashView([
     int? routerId,
     bool preventDuplicates = true,
@@ -168,14 +201,16 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToHomeView([
+  Future<dynamic> navigateToHomeView({
+    _i10.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.homeView,
+        arguments: HomeViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -224,6 +259,22 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToCartView({
+    _i10.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.cartView,
+        arguments: CartViewArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithSplashView([
     int? routerId,
     bool preventDuplicates = true,
@@ -266,14 +317,16 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithHomeView([
+  Future<dynamic> replaceWithHomeView({
+    _i10.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.homeView,
+        arguments: HomeViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -316,6 +369,22 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.signUpView2,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithCartView({
+    _i10.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.cartView,
+        arguments: CartViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

@@ -29,7 +29,7 @@ class SplashView extends StatelessWidget {
                   child: Assets.images.bg.image(height: ScreenSize.height,
                   width: ScreenSize.width),
                 ),
-                Center(child: Assets.images.logo.image(height: ScreenSize.height/6,
+                Center(child: Assets.images.logo.image(height: ScreenSize.height/8,
                 width: ScreenSize.height/6)),
               ] ),
             ),
