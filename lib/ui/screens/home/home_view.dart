@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paw/models/RspBanner.dart';
-
 import 'package:stacked/stacked.dart';
-
 import '../../../constants/assets.gen.dart';
 import '../../tools/model_future_builder.dart';
 import '../../tools/screen_size.dart';

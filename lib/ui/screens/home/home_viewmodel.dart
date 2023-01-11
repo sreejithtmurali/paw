@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:stacked/stacked.dart';
-
 import '../../../app/app.locator.dart';
-
 import '../../../app/app.router.dart';
 import '../../../app/utils.dart';
 import '../../../models/RspBanner.dart';

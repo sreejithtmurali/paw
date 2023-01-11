@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../models/RspBanner.dart';
 
 Widget BannerWidget({VoidCallback? onPressed, required List<RspBanner> list}) {
-  int _current = 0;
+  int _current = 00;
   int index = 1;
   changeindex(int i) {
     index=i;
