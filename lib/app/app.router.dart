@@ -5,9 +5,10 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i10;
+import 'package:flutter/material.dart' as _i11;
 import 'package:flutter/material.dart';
 import 'package:paw/ui/screens/Cart/cart_view.dart' as _i9;
+import 'package:paw/ui/screens/DashBoard/dashboard_view.dart' as _i10;
 import 'package:paw/ui/screens/home/home_view.dart' as _i5;
 import 'package:paw/ui/screens/login/login_view.dart' as _i6;
 import 'package:paw/ui/screens/Signup/signup_view.dart' as _i7;
@@ -16,7 +17,7 @@ import 'package:paw/ui/screens/splash/splash_view.dart' as _i2;
 import 'package:paw/ui/screens/splash2/splash2_view.dart' as _i3;
 import 'package:paw/ui/screens/splash3/splash3_view.dart' as _i4;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i11;
+import 'package:stacked_services/stacked_services.dart' as _i12;
 
 class Routes {
   static const splashView = '/';
@@ -35,6 +36,8 @@ class Routes {
 
   static const cartView = '/cart-view';
 
+  static const dashBoardView = '/dash-board-view';
+
   static const all = <String>{
     splashView,
     splash2View,
@@ -44,6 +47,7 @@ class Routes {
     signUpView,
     signUpView2,
     cartView,
+    dashBoardView,
   };
 }
 
@@ -80,6 +84,10 @@ class StackedRouter extends _i1.RouterBase {
     _i1.RouteDef(
       Routes.cartView,
       page: _i9.CartView,
+    ),
+    _i1.RouteDef(
+      Routes.dashBoardView,
+      page: _i10.DashBoardView,
     ),
   ];
 
@@ -138,6 +146,15 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
+    _i10.DashBoardView: (data) {
+      final args = data.getArgs<DashBoardViewArguments>(
+        orElse: () => const DashBoardViewArguments(),
+      );
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => _i10.DashBoardView(key: args.key),
+        settings: data,
+      );
+    },
   };
 
   @override
@@ -149,16 +166,22 @@ class StackedRouter extends _i1.RouterBase {
 class HomeViewArguments {
   const HomeViewArguments({this.key});
 
-  final _i10.Key? key;
+  final _i11.Key? key;
 }
 
 class CartViewArguments {
   const CartViewArguments({this.key});
 
-  final _i10.Key? key;
+  final _i11.Key? key;
 }
 
-extension NavigatorStateExtension on _i11.NavigationService {
+class DashBoardViewArguments {
+  const DashBoardViewArguments({this.key});
+
+  final _i11.Key? key;
+}
+
+extension NavigatorStateExtension on _i12.NavigationService {
   Future<dynamic> navigateToSplashView([
     int? routerId,
     bool preventDuplicates = true,
@@ -202,7 +225,7 @@ extension NavigatorStateExtension on _i11.NavigationService {
   }
 
   Future<dynamic> navigateToHomeView({
-    _i10.Key? key,
+    _i11.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -260,7 +283,7 @@ extension NavigatorStateExtension on _i11.NavigationService {
   }
 
   Future<dynamic> navigateToCartView({
-    _i10.Key? key,
+    _i11.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -269,6 +292,22 @@ extension NavigatorStateExtension on _i11.NavigationService {
   }) async {
     return navigateTo<dynamic>(Routes.cartView,
         arguments: CartViewArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToDashBoardView({
+    _i11.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.dashBoardView,
+        arguments: DashBoardViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -318,7 +357,7 @@ extension NavigatorStateExtension on _i11.NavigationService {
   }
 
   Future<dynamic> replaceWithHomeView({
-    _i10.Key? key,
+    _i11.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -376,7 +415,7 @@ extension NavigatorStateExtension on _i11.NavigationService {
   }
 
   Future<dynamic> replaceWithCartView({
-    _i10.Key? key,
+    _i11.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -385,6 +424,22 @@ extension NavigatorStateExtension on _i11.NavigationService {
   }) async {
     return replaceWith<dynamic>(Routes.cartView,
         arguments: CartViewArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithDashBoardView({
+    _i11.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.dashBoardView,
+        arguments: DashBoardViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

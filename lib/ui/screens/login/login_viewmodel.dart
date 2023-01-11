@@ -4,6 +4,6 @@ import 'package:stacked/stacked.dart';
 
 class LoginViewModel extends BaseViewModel {
  void navHomr(){
-   navigationService.navigateTo(Routes.homeView);
+   navigationService.navigateTo(Routes.dashBoardView);
  }
 }

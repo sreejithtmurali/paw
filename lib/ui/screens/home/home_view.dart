@@ -16,21 +16,6 @@ class HomeView extends StatelessWidget {
       onModelReady: (model) => model.getSponsorSlide(),
       builder: (context, viewModel, child) => Scaffold(
         body: Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.white,
-            leading: Padding(
-              padding: const EdgeInsets.only(top: 18.0, bottom: 18),
-              child: Assets.images.logo.image(height: 16, width: 16),
-            ),
-            title: const Text(
-              "Paw",
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 22,
-                  color: Color(0xffffc727)),
-            ),
-          ),
           body: SingleChildScrollView(
             child: Column(
               children: [
