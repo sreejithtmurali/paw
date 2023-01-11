@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/retry.dart';
@@ -23,10 +21,11 @@ class ApiService {
   String payloadToJson(List<RspBanner> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
   Future<List<RspBanner>> getSponsorSlide() async {
-    final response =  rootBundle.loadString(Assets.json.imagelist) as String;
+    final response = await rootBundle.loadString(Assets.json.imagelist);
     var payloadList = payloadFromJson(response);
     return payloadList;
   }
+
   var client = RetryClient(
     http.Client(),
     whenError: (onError, stackTrace) {
@@ -39,6 +38,13 @@ class ApiService {
   );
   Duration timeoutDuration = const Duration(seconds: 20);
   Map<String, String> get userHeader {
+    // if (user?.accessToken != null) {
+    //   return {
+    //     'Accept': 'application/json',
+    //     'Authorization': 'Bearer ${user!.accessToken}',
+    //     'Content-Type': 'application/json',
+    //   };
+    // }
     debugPrint('Token is null');
     return jsonHeader;
   }
@@ -48,6 +54,23 @@ class ApiService {
     'Content-Type': 'application/json',
   };
 
+  // Future<void> saveLoginCredential(AppUser appUser) async {
+  // user = appUser;
+  // SharedPreferences prefs = await SharedPreferences.getInstance();
+  // prefs.setBool(Prefs.isLoggedIn, true);
+  // prefs.setString(Prefs.user, jsonEncode(user!.toJson()));
+  // }
+
+  // Future<AppUser?> loadCredential() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   String? value = prefs.getString(Prefs.user);
+  //   if (value != null) {
+  //     user = AppUser.fromJson(jsonDecode(value));
+  //   } else {
+  //     user = null;
+  //   }
+  //   return user;
+  // }
 }
 
 enum ApiEnvironment {

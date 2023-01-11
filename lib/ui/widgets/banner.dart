@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../../app/utils.dart';
 import '../../models/RspBanner.dart';
 
 Widget BannerWidget({VoidCallback? onPressed, required List<RspBanner> list}) {
@@ -41,11 +40,16 @@ Widget BannerWidget({VoidCallback? onPressed, required List<RspBanner> list}) {
                 borderRadius: BorderRadius.circular(10.0),
                 color: Color(0xffffc727),
               ),
-              child:ClipRect(
-             child:Image.network(
-            imageUrl.image,
-            fit:BoxFit.cover,
-            ))
+              child:ClipRRect(
+                borderRadius:
+                BorderRadius.circular(10),
+                child: Image.network('${imageUrl.image}',fit: BoxFit.cover,),
+              ),
+            //   ClipRect(
+            //  child:Image.network(
+            // imageUrl.image,
+            // fit:BoxFit.cover,
+            // ))
             );
 
 

@@ -66,30 +66,20 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                const Padding(
+                  padding:  EdgeInsets.only(left: 8.0, right: 8.0),
                   child: SizedBox(
                       height: 200,
-                      child: Card(
-                        shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10))),
-                        child: ModelFutureListBuilder<RspBanner>(
-                            busy: viewModel.isBusy,
-                            data: viewModel.banner_images,
-                            builder: (context, data, child) {
-                              return BannerWidget(list: data);
-                            }),
-                      )),
+                      child:TitleSection()),
                 ),
                 const SizedBox(
                   height: 32,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 18.0),
+                  padding:  EdgeInsets.only(left: 18.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
+                    children:  const [
                       Text(
                         "Latest Arrivals",
                         style: TextStyle(
@@ -106,7 +96,7 @@ class HomeView extends StatelessWidget {
                     height:
                         ScreenSize.getHeight(double.parse(800.toString()), 700),
                     child: GridView.count(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       crossAxisCount: 2,
                       childAspectRatio:
                           MediaQuery.of(context).size.height / 1000,
@@ -172,7 +162,7 @@ class HomeView extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 5.0),
+                                  padding: const EdgeInsets.only(left: 5.0),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: const [
@@ -219,17 +209,17 @@ class HomeView extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Text(
+                                      const Text(
                                         "₹1299",
                                         style: TextStyle(
                                             fontSize: 14,
                                             color: Color(0xff3d3d3d),
                                             fontWeight: FontWeight.w500),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 5,
                                       ),
-                                      Center(
+                                      const Center(
                                           child: Text(
                                         "₹3600",
                                         style: TextStyle(
@@ -237,7 +227,7 @@ class HomeView extends StatelessWidget {
                                             color: Color(0xff3d3d3d),
                                             fontWeight: FontWeight.w500),
                                       )),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 5,
                                       ),
                                       SizedBox(
@@ -246,7 +236,7 @@ class HomeView extends StatelessWidget {
                                               onPressed: () {
                                                 viewModel.navCart();
                                               },
-                                              child: Text(
+                                              child: const Text(
                                                 "Add Cart",
                                                 style: TextStyle(fontSize: 12),
                                               )))
@@ -266,6 +256,25 @@ class HomeView extends StatelessWidget {
           ),
         ),
       ),
+      viewModelBuilder: () => HomeViewModel(),
+    );
+  }
+}
+class TitleSection extends ViewModelWidget<HomeViewModel> {
+  const TitleSection({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, HomeViewModel viewModel) {
+    return  ViewModelBuilder<HomeViewModel>.reactive(
+      onModelReady: (model) => model.getSponsorSlide(),
+      builder: (context, model, child) =>
+          ModelFutureListBuilder<RspBanner>(
+              busy: model.isBusy,
+              data: model.banner_images,
+              builder: (context, data, child) {
+                return BannerWidget(list: data);
+              }),
+
       viewModelBuilder: () => HomeViewModel(),
     );
   }

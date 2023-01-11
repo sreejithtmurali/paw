@@ -1,6 +1,5 @@
 import 'dart:async';
 
-
 import 'package:stacked/stacked.dart';
 
 import '../../../app/app.locator.dart';
@@ -22,8 +21,11 @@ class HomeViewModel extends BaseViewModel {
   final _apiService = locator<ApiService>();
   List<RspBanner> banner_images = [];
 
+
+
+
   Future<void> getSponsorSlide() async {
-    var data = await runBusyFuture(_apiService.getSponsorSlide());
+    var data = await  runBusyFuture(_apiService.getSponsorSlide());
     if (data.isNotEmpty) {
       banner_images = data;
     }

@@ -17,6 +17,5 @@ class Assets {
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesStar = 'assets/images/star.png';
   static const String jsonImagelist = 'assets/json/imagelist.json';
-  static const String jsonProductlist = 'assets/json/productlist.json';
 
 }

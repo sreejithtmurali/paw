@@ -4,10 +4,10 @@ class RspBanner {
 
  late String image;
 
-  factory RspBanner.fromJson(Map<String, dynamic> json) => RspBanner(image: json["image"] == null ? null : json["image"],
+  factory RspBanner.fromJson(Map<String, dynamic> json) => RspBanner(image: json["image"],
   );
   Map<String, dynamic> toJson() => {
-    "image": image == null ? null : image,
+    "image": image,
   };
 }
 

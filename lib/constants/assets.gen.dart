@@ -82,11 +82,8 @@ class $AssetsJsonGen {
   /// File path: assets/json/imagelist.json
   String get imagelist => 'assets/json/imagelist.json';
 
-  /// File path: assets/json/productlist.json
-  String get productlist => 'assets/json/productlist.json';
-
   /// List of all assets
-  List<String> get values => [imagelist, productlist];
+  List<String> get values => [imagelist];
 }
 
 class Assets {
