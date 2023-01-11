@@ -5,7 +5,6 @@ import 'package:paw/models/RspBanner.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../constants/assets.gen.dart';
-import '../../tools/model_future_builder.dart';
 import '../../tools/screen_size.dart';
 import '../../widgets/banner.dart';
 import 'home_viewmodel.dart';
@@ -17,7 +16,6 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.nonReactive(
-      onModelReady: (model) => model.getSponsorSlide(),
       builder: (context, viewModel, child) => Scaffold(
         body: Scaffold(
           appBar: AppBar(
@@ -67,15 +65,15 @@ class HomeView extends StatelessWidget {
                     child: SizedBox(height: 200, child:  Card(
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(topLeft: Radius.circular(10))),
-                      child: ModelFutureListBuilder<RspBanner>(
-                        busy: viewModel.isBusy,
-                        data: viewModel.banner_images,
-                       builder: (context, data, child) {
-
-                          return  BannerWidget(list: data);
-
-                       }
-                      )
+                      child: FutureBuilder<List<RspBanner>>(
+                        future: viewModel.getSponsorSlide(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasError) print(snapshot.error);
+                          return snapshot.hasData
+                              ? BannerWidget(list: snapshot.data as List<RspBanner>)
+                              : Center(child: CircularProgressIndicator());
+                        },
+                      ),
                     )),
                   ),
                   const SizedBox(
@@ -191,9 +189,7 @@ class HomeView extends StatelessWidget {
                                       children:  [
                                          Text("₹1299" ,style: TextStyle(fontSize: 14,color: Color(0xff3d3d3d),fontWeight: FontWeight.w500),),
                                          SizedBox(width: 5,),
-                                         Center(child: Text("₹3600" ,style: TextStyle(
-                                             decoration: TextDecoration.lineThrough,
-                                             fontSize: 12,color: Color(0xff3d3d3d),fontWeight: FontWeight.w500),)),
+                                         Center(child: Text("₹3600" ,style: TextStyle(fontSize: 12,color: Color(0xff3d3d3d),fontWeight: FontWeight.w500),)),
                                         SizedBox(width: 5,),
 
                                        SizedBox(height:24,child: ElevatedButton(onPressed: (){
